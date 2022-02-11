@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <style>
+        table{
+            border: solid 2px blue;
+        }
+    </style>
+    <title>Exercise5</title>
+</head>
+<body>
+    <div>
+        <img src=""id="img">
+        <span id="warning1"></span>
+        <span id="warning2"></span>
+    </div>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>UserName</th>
+            <th>Email</th>
+            <th>Address</th>
+            <th>Phone</th>
+            <th>Website</th>
+            <th>Company</th>
+        </tr>
+    
+        <tbody id="myTable">
+            
+        </tbody>
+    </table>
+</body>
+<script>
+
+    let promise = new Promise(function(ressolve, reject){
+        setTimeout(()=>{
+            fetch('https://jsonplaceholder.typicode.com/users')
+            .then(Response => Response.json())
+            .then(data =>{
+                buildTable(data)
+
+            })
+            
+
+            function buildTable(data){
+            var table = document.getElementById('myTable')
+
+            for (var i = 0; i < data.length; i++){
+                var row = `<tr>
+                                <td>${data[i].id}</td>
+                                <td>${data[i].name}</td>
+                                <td>${data[i].username}</td>
+                                <td>${data[i].email}</td>
+                                <td>${data[i].address.street} 
+                                    ${data[i].address.suite} 
+                                    ${data[i].address.city}
+                                    ${data[i].address.zipcode}
+                                    ${data[i].address.geo.lat}
+                                    ${data[i].address.geo.lng}
+                                </td>
+                                <td>${data[i].phone}</td>
+                                <td>${data[i].website}</td>
+                                <td>
+                                ${data[i].company.name}
+                                ${data[i].company.catchPhrase}
+                                ${data[i].company.bs}
+                                
+                                </td>
+                        </tr>`
+                table.innerHTML += row
+
+
+            }
+        }
+        }, 1000)
+
+    })
+    promise.then(function() {
+        console.log("Success");
+    }).catch(function() {
+        const h1 = document.querySelector('#warning1').innerHTML = "Something went Wrong. Cann't loaded data.";
+        const h2 = document.querySelector('#warning2').innerHTML = "Please check your internet connection";
+
+    })
+    
+    
+   
+
+    
+</script>
+</html>

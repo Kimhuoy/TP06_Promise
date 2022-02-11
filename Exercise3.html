@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise3</title>
+</head>
+<body>
+    
+</body>
+<script>
+    async function sayHello(){
+    let result = await new Promise(function(resolve, reject){
+        setTimeout(() => {
+            resolve("Hello from one.")
+        },5000)
+    })
+    return result;
+    
+    }
+
+
+    sayHello().then(function(result){
+        console.log(result);
+    })
+</script>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise2</title>
+</head>
+<body>
+    <h1 id="h1"></h1>
+    <h1 id="h2"></h1>
+    <h1 id="h3"></h1>
+    <h1 id="h4"></h1>
+    <h1 id="h5"></h1>
+    <h1 id="h6"></h1>
+  
+</body>
+<script>
+    let promise1 = new Promise(function(resolve, reject){
+    setTimeout(() => {
+        const h1 = document.querySelector('#h1').innerHTML = "Hello from one"
+        resolve("Hello from one")
+        console.log(promise1)
+    }, 2000)
+})
+
+
+let promise2 = new Promise(function(resolve, reject){
+    setTimeout(() => {
+        const h2 = document.querySelector('#h2').innerHTML = "Hello from two"
+        resolve("Hello from two")
+        console.log(promise2)
+    }, 4000)
+})
+
+let promise3 = new Promise(function(resolve, reject){
+    setTimeout(() => {
+        const h3 = document.querySelector('#h3').innerHTML = "Hello from three"
+        resolve("Hello from three")
+        console.log(promise3)
+    }, 3000)
+})
+
+let promise4 = new Promise(function(resolve, reject){
+    setTimeout(() => {
+        const h4 = document.querySelector('#h4').innerHTML = "Hello from four"
+        resolve("Hello from four")
+        console.log(promise4)
+    }, 1000)
+})
+
+let promise5 = new Promise(function(resolve, reject){
+    setTimeout(() => {
+        const h5 = document.querySelector('#h5').innerHTML = "Hello from five"
+        resolve("Hello from five")
+        console.log(promise5)
+    }, 5000)
+})
+
+Promise.allSettled([promise1, promise2, promise3, promise4, promise5]).then(function()
+{
+    const h6 = document.querySelector('#h6').innerHTML = "All taske done."
+    console.log("All tasks are done")
+})
+</script>
+</html>

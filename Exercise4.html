@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise4</title>
+</head>
+<body>
+    <h1></h1>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script>
+    
+    const getPosts = axios.get('https://jsonplaceholder.typicode.com/posts');
+    const getComments = axios.get('https://jsonplaceholder.typicode.com/comments');
+    const getPhotos = axios.get('https://jsonplaceholder.typicode.com/photos');
+
+    Promise.all([getPosts, getComments, getPhotos]).then((result) =>{
+        const h1 = document.querySelector('h1').innerHTML = "Data is loaded."
+        console.log("Data is loaded.", result);
+
+    })
+
+</script>
+</html>
